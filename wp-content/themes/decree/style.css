@@ -312,7 +312,6 @@ h6 {
 	border-top: none;
 	border-right: none;
 	border-left: none;
-	border-bottom: 3px solid #B0C52B;
 }
 
 #call-to-action-widget .button-minimal:hover,
@@ -335,8 +334,8 @@ h6 {
 #featured-content .more-button .button-minimal:focus,
 #promotion-headline-section .button-minimal:hover,
 #promotion-headline-section .button-minimal:focus {
-	background-color: #8f1014;
-	border-color: #8f1014;
+	background-color: #B0C52B;
+	border-color: #B0C52B;
 	color: #fff;
 }
 
@@ -1029,7 +1028,6 @@ input[type="reset"],
 input[type="submit"] {
 	border: none;
 	background-color: #B0C52B;
-	border-bottom: 3px solid #8f1014;
 	box-shadow: none;
 	color: #fff;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
@@ -1042,7 +1040,7 @@ button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	background-color: #8f1014;
+	background-color: #B0C52B;
 	border-color: #B0C52B;
 	box-shadow: none;
 }
@@ -2130,9 +2128,9 @@ textarea {
 
 #testimonial-section .cycle-prev,
 #testimonial-section .cycle-next {
-	border: 1px solid #8f1014;
+	border: 1px solid #B0C52B;
 	border-radius: 50%;
-	color: #8f1014;
+	color: #B0C52B;
 	cursor: pointer;
 	font-size: 26px;
 	line-height: 1;
@@ -2154,7 +2152,7 @@ textarea {
 #testimonial-section .cycle-prev:focus,
 #testimonial-section .cycle-next:hover,
 #testimonial-section .cycle-next:focus {
-	background-color: #8f1014;
+	background-color: #B0C52B;
 	color: #fff;
 }
 
@@ -2808,14 +2806,14 @@ textarea {
 
 .ctnewsletter .ct-newsletter-wrap #subbutton {
     background-color: #B0C52B;
-    border-color: #8f1014;
+    border-color: #B0C52B;
     color: #fff;
 	margin: 0;
 }
 
 .ctnewsletter .ct-newsletter-wrap #subbutton:focus,
 .ctnewsletter .ct-newsletter-wrap #subbutton:hover {
-	background-color: #8f1014;
+	background-color: #B0C52B;
 	border-color: #B0C52B;
 	color: #fff;
 }
