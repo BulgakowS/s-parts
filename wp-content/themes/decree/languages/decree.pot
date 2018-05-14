@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Decree\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2018-04-17 11:57+0545\n"
+"POT-Creation-Date: 2018-05-10 14:49+0545\n"
 "PO-Revision-Date: 2016-12-07 01:05-0500\n"
 "Last-Translator: Catch Themes <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Previous post:"
 msgstr ""
 
-#: ../inc/core.php:1547 ../inc/customizer-includes/custom-controls.php:34
+#: ../inc/core.php:1547 ../inc/customizer-includes/custom-controls.php:29
 msgid ""
 "Hold down the Ctrl (windows) / Command (Mac) button to select multiple "
 "options."
@@ -259,15 +259,15 @@ msgstr ""
 msgid "All Categories"
 msgstr ""
 
-#: ../inc/customizer-includes/custom-controls.php:47
+#: ../inc/customizer-includes/custom-controls.php:42
 msgid "Theme Instructions"
 msgstr ""
 
-#: ../inc/customizer-includes/custom-controls.php:51
+#: ../inc/customizer-includes/custom-controls.php:46
 msgid "Support"
 msgstr ""
 
-#: ../inc/customizer-includes/custom-controls.php:55
+#: ../inc/customizer-includes/custom-controls.php:50
 msgid "Changelog"
 msgstr ""
 

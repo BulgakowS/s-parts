@@ -4,7 +4,7 @@ Theme URI: https://catchthemes.com/themes/decree/
 Author: Catch Themes
 Author URI: https://catchthemes.com/
 Description: Decree is a simple yet power packed WordPress Theme for Lawyers, Law Firm and Attorney website. Unlike other WordPress Themes, Decree may not look exquisite at the first glance but it is a completely need-based WordPress Theme for Lawyers. Decree comes with strong and bold design, advanced functionality and customization options. It’s packed with optimizations and features made especially to bring more clients to your page. The theme is very suitable to present your strong professional personality in a unique way. Decree is fully responsive, optimized and offers utilitarian features as Header Top Section where you can add or remove quick links, Header Right Sidebar where you can display your contact number, custom menu and widget areas and many more. Decree offers some cleverly arranged content blocks that will help you market your services better and it makes sure that no important information has been left out. Decree gives you the perfect online niche that is dynamic, multifunctional and upfront. Decree is an ideal professional WordPress theme for counsel, law firm, legal officer, adviser, solicitor, consultant, and corporate websites. This theme is translation ready. Check out Theme Instructions at https://catchthemes.com/theme-instructions/decree/, Support at https://catchthemes.com/support/ and Demo at https://catchthemes.com/demo/decree/
-Version: 1.0.4
+Version: 1.0.6
 License: GNU General Public License, version 3 (GPLv3)
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 Text Domain: decree
@@ -16,39 +16,6 @@ Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
 along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 and Blueprint http://www.blueprintcss.org/
 */
-
-
-/**
- * Table of Contents
- *
- * 1.0 - Reset
- * 2.0 - FontAwesome
- * 3.0 - Typography
- * 4.0 - Elements
- * 5.0 - Padding/Margin
- * 6.0 - Forms
- * 7.0 - Navigation
- * 8.0 - Accessibility
- * 9.0 - Alignments
- * 10.0 - Clearings
- * 11.0 - Header Top Area
- * 12.0 - Header Area
- * 13.0 - Hero Section
- * 14.0 - Promotion Area
- * 15.0 - Featured Content Area
- * 16.0 - Testimonials Area
- * 17.0 - Team
- * 18.0 - Contact Info
- * 19.0 - Content
- * 20.0 - Widgets
- * 21.0 - Comments
- * 22.0 - Media
- * 23.0 - Captions
- * 24.0 - Galleries
- * 25.0 - Footer
- * 26.0 - Extra Elements
- * 27.0 - Media Queries
- */
 
 
 /**
@@ -312,6 +279,7 @@ h6 {
 	border-top: none;
 	border-right: none;
 	border-left: none;
+	border-bottom: 3px solid #B0C52B;
 }
 
 #call-to-action-widget .button-minimal:hover,
@@ -320,7 +288,6 @@ h6 {
 #feature-slider .more-button .button-minimal:focus {
 	background-color: #B0C52B;
 	border-color: #B0C52B;
-
 }
 
 
@@ -1028,6 +995,7 @@ input[type="reset"],
 input[type="submit"] {
 	border: none;
 	background-color: #B0C52B;
+	border-bottom: 3px solid #B0C52B;
 	box-shadow: none;
 	color: #fff;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
@@ -1295,12 +1263,12 @@ textarea {
 
 .decree-nav-menu a:hover,
 .decree-nav-menu a:focus {
-	color:  #B0C52B;
+	color:  #d7060d;
 }
 
 .decree-nav-menu ul {
 	background: #fff;
-	border-top: 3px solid #B0C52B;
+	border-top: 3px solid #d7060d;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1327,7 +1295,7 @@ textarea {
 .decree-nav-menu .current_page_ancestor > a,
 .header-top-bar .decree-nav-menu .current-menu-item > a,
 .header-top-bar .decree-nav-menu .current-menu-ancestor > a {
-	color: #B0C52B;
+	color: #d7060d;
 }
 
 .menu-secondary .decree-nav-menu a {
@@ -1478,7 +1446,7 @@ textarea {
 #search-toggle:hover,
 #search-toggle:focus {
 	background-color: transparent;
-    color: #B0C52B;
+    color: #d7060d;
 }
 
 .nav-primary .search-submit {
@@ -2446,6 +2414,9 @@ textarea {
 	text-align: center;
 }
 
+.home.page-template-default.layout-one-column .site-main .entry-header .entry-title {
+	display: none;
+}
 .home.page-template-default.layout-one-column.content-width .site-main .entry-content {
 	text-align: center;
 }
@@ -3659,12 +3630,11 @@ entry-meta a {
 }
 
 #portfolios-content .hentry {
-    float: left;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 100%;
+	float: left;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	margin: 0;
 }
 
 #portfolios-content .entry-header {
@@ -3896,10 +3866,6 @@ entry-meta a {
 }
 
 @media screen and (min-width: 480px) {
-	#portfolios-content .hentry {
-	    width: 50%;
-	}
-
 	.two-columns .hentry,
 	.four-columns .hentry,
 	.blog .site-main .hentry,
@@ -3941,7 +3907,6 @@ entry-meta a {
 	.four-columns .hentry:nth-child(2n+1),
 	.three-columns .hentry:nth-child(3n+1),
 	.two-columns .hentry:nth-child(2n+1),
-	#portfolios-content .hentry:nth-child(2n+1),
 	.blog .site-main .hentry:nth-child(2n+1),
 	#supplementary.two .widget-area:nth-child(2n+1),
 	#supplementary.four .widget-area:nth-child(2n+1) {
@@ -4182,10 +4147,6 @@ entry-meta a {
 	    bottom: 30px;
 	}
 
-	#portfolios-content .hentry {
-	    width: 25%;
-	}
-
 	.four-columns .hentry,
 	.blog .site-main .hentry,
 	#supplementary.four .widget-area {
@@ -4193,14 +4154,12 @@ entry-meta a {
 	}
 
 	.four-columns .hentry:nth-child(2n+1),
-	#portfolios-content .hentry:nth-child(2n+1),
 	.blog .site-main .hentry:nth-child(2n+1),
 	#supplementary.four .widget-area:nth-child(2n+1) {
 		clear: none;
 	}
 
 	.four-columns .hentry:nth-child(4n+1),
-	#portfolios-content .hentry:nth-child(4n+1),
 	.blog .site-main .hentry:nth-of-type(4n+1),
 	#supplementary.four .widget-area:nth-child(4n+1) {
 		clear: both;
@@ -4250,7 +4209,7 @@ entry-meta a {
 
 	#search-container {
 		background: #fff;
-		border-top: 3px solid #B0C52B;
+		border-top: 3px solid #d7060d;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 		-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 		-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -4598,9 +4557,3 @@ entry-meta a {
  		font-size: 16px;
   	}
 }
-
-
-.no-borders, .no-borders tr, .no-borders td {
-	border: none;
-}
-

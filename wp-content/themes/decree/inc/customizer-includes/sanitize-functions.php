@@ -157,7 +157,7 @@ function decree_sanitize_number_range( $number, $setting ) {
  * @since Decree 0.1
  */
 function decree_sanitize_footer_code( $input ) {
-	return ( stripslashes( wp_filter_post_kses( addslashes ( $input ) ) ) );
+	return ( stripslashes( wp_kses_post( addslashes ( $input ) ) ) );
 }
 
 

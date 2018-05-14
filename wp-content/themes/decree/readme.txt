@@ -146,6 +146,9 @@ For detail instructions, check out theme instructions page at https://catchtheme
 
 == Change Log ==
 
+= 1.0.6 (Merged 1.0.5) (Released: May 10, 2018) =
+* Bug fixed : Portfolio section layout issue fixed
+
 = 1.0.4 (Released: April 17, 2018) =
 * Bug Fixed: Design issue with Catch Infinite Scroll plugin
 
