@@ -259,7 +259,7 @@ h6 {
 
 .button-minimal {
 	background-color: transparent;
-	border: 2px solid #B0C52B;
+	border: 2px solid #b0c500;
 	color: #B0C52B;
 	display: inline-block;
 	padding: 6px 14px;
@@ -287,7 +287,7 @@ h6 {
 #feature-slider .more-button .button-minimal:hover,
 #feature-slider .more-button .button-minimal:focus {
 	background-color: #B0C52B;
-	border-color: #B0C52B;
+	border-color: #b0c500;
 }
 
 
@@ -302,7 +302,7 @@ h6 {
 #promotion-headline-section .button-minimal:hover,
 #promotion-headline-section .button-minimal:focus {
 	background-color: #B0C52B;
-	border-color: #B0C52B;
+	border-color: #b0c500;
 	color: #fff;
 }
 
@@ -995,7 +995,7 @@ input[type="reset"],
 input[type="submit"] {
 	border: none;
 	background-color: #B0C52B;
-	border-bottom: 3px solid #B0C52B;
+	border-bottom: 3px solid #b0c500;
 	box-shadow: none;
 	color: #fff;
 	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
@@ -1009,7 +1009,7 @@ input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
 	background-color: #B0C52B;
-	border-color: #B0C52B;
+	border-color: #b0c500;
 	box-shadow: none;
 }
 
@@ -1077,7 +1077,7 @@ input[type="number"]:focus,
 textarea:focus {
 	background-color: #fff;
 	color: #1a1a1a;
-	border: 1px solid #B0C52B;
+	border: 1px solid #b0c500;
 }
 
 textarea {
@@ -1263,12 +1263,12 @@ textarea {
 
 .decree-nav-menu a:hover,
 .decree-nav-menu a:focus {
-	color:  #d7060d;
+	color:  #B0C52B;
 }
 
 .decree-nav-menu ul {
 	background: #fff;
-	border-top: 3px solid #d7060d;
+	border-top: 3px solid #b0c500;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -1295,7 +1295,7 @@ textarea {
 .decree-nav-menu .current_page_ancestor > a,
 .header-top-bar .decree-nav-menu .current-menu-item > a,
 .header-top-bar .decree-nav-menu .current-menu-ancestor > a {
-	color: #d7060d;
+	color: #B0C52B;
 }
 
 .menu-secondary .decree-nav-menu a {
@@ -1446,7 +1446,7 @@ textarea {
 #search-toggle:hover,
 #search-toggle:focus {
 	background-color: transparent;
-    color: #d7060d;
+    color: #B0C52B;
 }
 
 .nav-primary .search-submit {
@@ -1578,7 +1578,7 @@ textarea {
 .woocommerce nav.woocommerce-pagination ul li a,
 .woocommerce nav.woocommerce-pagination ul li span {
 	background-color: #fff;
-	border: 2px solid #B0C52B;
+	border: 2px solid #b0c500;
 	-webkit-transition: all 0.3s;
 	   -moz-transition: all 0.3s;
 	    -ms-transition: all 0.3s;
@@ -1595,7 +1595,7 @@ textarea {
 .page-links a,
 .page-links span {
     background-color: #fff;
-    border: 2px solid #B0C52B;
+    border: 2px solid #b0c500;
 }
 
 .pagination .nav-links a,
@@ -1617,7 +1617,7 @@ textarea {
 .site-main #infinite-handle span button,
 .site-main #infinite-handle span button:hover,
 .site-main #infinite-handle span button:focus {
-	border: 2px solid #B0C52B;
+	border: 2px solid #b0c500;
 	padding: 10px 20px;
 }
 
@@ -1645,7 +1645,7 @@ textarea {
 .page-links a:hover span,
 .page-links a:focus span {
 	background-color: #B0C52B;
-	border-color: #B0C52B;
+	border-color: #b0c500;
 	color: #fff;
 }
 
@@ -2096,7 +2096,7 @@ textarea {
 
 #testimonial-section .cycle-prev,
 #testimonial-section .cycle-next {
-	border: 1px solid #B0C52B;
+	border: 1px solid #b0c500;
 	border-radius: 50%;
 	color: #B0C52B;
 	cursor: pointer;
@@ -2777,7 +2777,7 @@ textarea {
 
 .ctnewsletter .ct-newsletter-wrap #subbutton {
     background-color: #B0C52B;
-    border-color: #B0C52B;
+    border-color: #b0c500;
     color: #fff;
 	margin: 0;
 }
@@ -2785,7 +2785,7 @@ textarea {
 .ctnewsletter .ct-newsletter-wrap #subbutton:focus,
 .ctnewsletter .ct-newsletter-wrap #subbutton:hover {
 	background-color: #B0C52B;
-	border-color: #B0C52B;
+	border-color: #b0c500;
 	color: #fff;
 }
 
@@ -3710,7 +3710,7 @@ entry-meta a {
 #portfolios-content .button:hover,
 #portfolios-content .button:focus {
     background-color: #B0C52B;
-    border-color: #993333;
+    border-color: #b0c500;
     color: #fff;
 }
 
@@ -3757,7 +3757,7 @@ entry-meta a {
 
 .news-ticker-label {
 	background-color: #000;
-	border-right: 3px solid #B0C52B;
+	border-right: 3px solid #b0c500;
 	color: #B0C52B;
     display: inline-block;
     float: left;
@@ -4209,7 +4209,7 @@ entry-meta a {
 
 	#search-container {
 		background: #fff;
-		border-top: 3px solid #d7060d;
+		border-top: 3px solid #b0c500;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 		-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 		-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
