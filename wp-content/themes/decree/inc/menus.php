@@ -36,9 +36,9 @@ if ( ! function_exists( 'decree_primary_menu' ) ) :
 						}
 
 						?>
-						<div id="search-toggle">
-							<a class="screen-reader-text" href="#search-container"><?php esc_html_e( 'Search', 'decree' ); ?></a>
-						</div>
+<!--						<div id="search-toggle">-->
+<!--							<a class="screen-reader-text" href="#search-container">--><?php //esc_html_e( 'Search', 'decree' ); ?><!--</a>-->
+<!--						</div>-->
 
 						<div id="search-container" class="displaynone">
 							<?php get_search_form(); ?>
