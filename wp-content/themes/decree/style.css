@@ -3847,6 +3847,24 @@ entry-meta a {
 }
 
 
+
+.wpm-languages.menu-item {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	margin-right: 0 !important;
+}
+.wpm-languages.menu-item:hover{
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.wpm-languages.menu-item.active-language,
+.wpm-languages.menu-item.active-language:hover{
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+
+
 /**
  * 27.0 - Media Queries
  */

@@ -26,31 +26,25 @@ class Plugin
 		if(!$this->legacySettings)
 			$this->legacySettings = array();
 		
-		// Force engine setting to Google Maps for users updating to 7.10.01 or above, set a flag so it only happens once
-		if(!isset($this->legacySettings['v7.10.01-default-api-fix']))
-		{
-			$this->legacySettings['wpgmza_maps_engine'] = 'google-maps';
-			$this->legacySettings['v7.10.01-default-api-fix'] = true;
-			update_option('WPGMZA_OTHER_SETTINGS', $this->legacySettings);
-		}
-		
 		$settings = $this->getDefaultSettings();
 		
 		// Legacy compatibility
 		global $wpgmza_pro_version;
 		
-		// TODO: This should be in default settings, this code is duplicated
+		// TODO: This should be in default settings, this code is duplicaetd
 		if(!empty($wpgmza_pro_version) && version_compare(trim($wpgmza_pro_version), '7.10.00', '<'))
 		{
+			$self = $this;
+			
 			$settings['wpgmza_maps_engine'] = $settings['engine'] = 'google-maps';
 			
-			add_filter('wpgooglemaps_filter_map_div_output', function($output) {
+			add_filter('wpgooglemaps_filter_map_div_output', function($output) use ($self) {
 				
 				$loader = new GoogleMapsAPILoader();
 				$loader->registerGoogleMaps();
 				$loader->enqueueGoogleMaps();
 				
-				$this->loadScripts();
+				$self->loadScripts();
 				
 				return $output;
 				
@@ -58,6 +52,8 @@ class Plugin
 		}
 		
 		$this->settings = (object)array_merge($this->legacySettings, $settings);
+		if(!empty($this->settings->wpgmza_maps_engine))
+			$this->settings->engine = $this->settings->wpgmza_maps_engine;
 		
 		add_action('wp_enqueue_scripts', function() {
 			Plugin::$enqueueScriptsFired = true;
@@ -100,10 +96,8 @@ class Plugin
 	
 	public function getDefaultSettings()
 	{
+		//$defaultEngine = (empty($this->legacySettings['wpgmza_maps_engine']) || $this->legacySettings['wpgmza_maps_engine'] != 'google-maps' ? 'open-layers' : 'google-maps');
 		$defaultEngine = 'google-maps';
-		
-		if(!empty($defaultEngine))
-			$defaultEngine = $this->legacySettings['wpgmza_maps_engine'];
 		
 		return apply_filters('wpgmza_plugin_get_default_settings', array(
 			'engine' 				=> $defaultEngine,
@@ -115,13 +109,16 @@ class Plugin
 	
 	public function getLocalizedData()
 	{
+		global $wpgmzaGDPRCompliance;
+		
 		$strings = new Strings();
 		
 		return apply_filters('wpgmza_plugin_get_localized_data', array(
-			'ajaxurl' 			=> admin_url('admin-ajax.php'),
-			'settings' 			=> $this->settings,
-			'localized_strings'	=> $strings->getLocalizedStrings(),
-			'_isProVersion'		=> $this->isProVersion()
+			'ajaxurl' 				=> admin_url('admin-ajax.php'),
+			'settings' 				=> $this->settings,
+			'localized_strings'		=> $strings->getLocalizedStrings(),
+			'api_consent_html'		=> $wpgmzaGDPRCompliance->getConsentPromptHTML(),
+			'_isProVersion'			=> $this->isProVersion()
 		));
 	}
 	

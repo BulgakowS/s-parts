@@ -3,20 +3,45 @@
 Plugin Name: WP Google Maps
 Plugin URI: https://www.wpgmaps.com
 Description: The easiest to use Google Maps plugin! Create custom Google Maps with high quality markers containing locations, descriptions, images and links. Add your customized map to your WordPress posts and/or pages quickly and easily with the supplied shortcode. No fuss.
-Version: 7.10.01
+Version: 7.10.08
 Author: WP Google Maps
 Author URI: https://www.wpgmaps.com
 Text Domain: wp-google-maps
 Domain Path: /languages
 */
 
-/* 
- * 7.10.01
- * Maps API defaults to Google Maps when updating to 7.10.01
- * Map engine dialog selection bug fixed
- * Map engine select setting fixed
+/*
+ * 7.10.08 - 2018-05-31 :- Medium Priority
+ * Fixed cannot edit marker in Basic only
  *
- * 7.10.00
+ * 7.10.07 - 2018-05-31 :- Medium Priority
+ * Fixed issue where map engine was different on back end
+ *
+ * 7.10.06 - 2018-05-31 :- Medium Priority
+ * Added "require consent before API load" to GDPR settings
+ *
+ * 7.10.05 - 2018-05-30 :- Low Priority
+ * Fixed Using $this when not in object context when using older PHP version
+ * Fixed google sometimes not defined when selected engine is OpenLayers
+ * Fixed can't edit GDPR fields
+ *
+ * 7.10.04 - 2018-05-30 :- Medium Priority
+ * Fixed geocode response coordinates not interpreted properly
+ * Italian translation updated
+ *
+ * 7.10.03 - 2018-05-30 :- High Priority
+ * Fixed InfoWindow not opening when max width set in
+ * Fixed $this not in context inside closure when using older PHP versions
+ * Fixed Gold add-on clustering settings blank
+ * Altered map engine selection dialog
+ * 
+ * 7.10.02 - 2018-05-29
+ * Engine defaults to Google Maps 
+ *
+ * 7.10.01 - 2018-05-29 :- Medium Prority
+ * Fixed undefined index notice in GDPR module
+ *
+ * 7.10.00 - 2018-05-29 :- Medium Priority
  * Added new Javascript modules
  * Added new PHP modules
  * Class AutoLoading implemented
@@ -2971,6 +2996,11 @@ function wpgmza_settings_page_post()
 {
 	global $wpdb;
 	
+	global $wpgmzaGDPRCompliance;
+	
+	if($wpgmzaGDPRCompliance)
+		$wpgmzaGDPRCompliance->onPOST();
+	
 	//$wpgmza_data = array();
 	$wpgmza_data = get_option('WPGMZA_OTHER_SETTINGS');
 	if(!$wpgmza_data)
@@ -2996,6 +3026,8 @@ function wpgmza_settings_page_post()
 		"carousel_autoheight",
 		"carousel_pagination",
 		"carousel_navigation",
+		"wpgmza_gdpr_enabled",
+		"wpgmza_gdpr_require_consent_before_load",
 		"wpgmza_developer_mode"
 	);
 	
@@ -3054,7 +3086,7 @@ function wpgmza_settings_page_post()
 	update_option('WPGMZA_OTHER_SETTINGS', $wpgmza_data);
 
 	if( isset( $_POST['wpgmza_google_maps_api_key'] ) ){ update_option( 'wpgmza_google_maps_api_key', sanitize_text_field( trim($_POST['wpgmza_google_maps_api_key'] )) ); }
-
+	
 	wp_redirect(get_admin_url() . 'admin.php?page=wp-google-maps-menu-settings');
 	exit;
 }
@@ -4209,13 +4241,17 @@ function wpgmaps_menu_settings_layout() {
 
 function wpgmaps_settings_page_basic() {
     
+	global $wpgmza;
+	
     wpgmza_stats("settings_basic");
     
     echo"<div class=\"wrap\"><div id=\"icon-edit\" class=\"icon32 icon32-posts-post\"><br></div><h2>".__("WP Google Map Settings","wp-google-maps")."</h2>";
 
     google_maps_api_key_warning();
 
-    $wpgmza_settings = get_option("WPGMZA_OTHER_SETTINGS");
+    $wpgmza_settings = array_merge((array)$wpgmza->settings, get_option("WPGMZA_OTHER_SETTINGS"));
+	$wpgmza_settings['wpgmza_maps_engine'] = $wpgmza_settings['engine'];
+	
     if (isset($wpgmza_settings['wpgmza_settings_map_full_screen_control'])) { $wpgmza_settings_map_full_screen_control = $wpgmza_settings['wpgmza_settings_map_full_screen_control']; }
     if (isset($wpgmza_settings['wpgmza_settings_map_streetview'])) { $wpgmza_settings_map_streetview = $wpgmza_settings['wpgmza_settings_map_streetview']; }
     if (isset($wpgmza_settings['wpgmza_settings_map_zoom'])) { $wpgmza_settings_map_zoom = $wpgmza_settings['wpgmza_settings_map_zoom']; }
@@ -4354,7 +4390,7 @@ function wpgmaps_settings_page_basic() {
     $upload_dir = wp_upload_dir();
     
         $map_settings_action = '';
-            
+		
             $ret = "<form action='" . get_admin_url() . "admin-post.php' method='post' id='wpgmaps_options'>";
 			$ret .= '<input name="action" value="wpgmza_settings_page_post" type="hidden"/>';
             $ret .= "    <p>$prov_msg</p>";
@@ -4367,6 +4403,9 @@ function wpgmaps_settings_page_basic() {
             $ret .= "                <li><a href=\"#tabs-3\">".__("Marker Listing","wp-google-maps")."</a></li>";
             $ret .= "                <li><a href=\"#tabs-4\">".__("Store Locator","wp-google-maps")."</a></li>";
             $ret .= "                <li><a href=\"#tabs-5\">".__("Advanced","wp-google-maps")."</a></li>";
+			
+			$ret .= apply_filters('wpgmza_global_settings_tabs', '');
+			
             $ret .= "        </ul>";
             $ret .= "        <div id=\"tabs-1\">";
             $ret .= "                <h3>".__("Map Settings")."</h3>";
@@ -4725,11 +4764,16 @@ function wpgmaps_settings_page_basic() {
 			";
 			
             $ret .= "           </div>";
+			
+			$ret .= apply_filters('wpgmza_global_settings_tab_content', '');
+			
             $ret .= "       </div>";
             $ret .= "       <p class='submit'><input type='submit' name='wpgmza_save_settings' class='button-primary' value='".__("Save Settings","wp-google-maps")." &raquo;' /></p>";
             $ret .= "   </form>";
+			
+			
             $ret .=  "</div>";
-            
+			
             echo $ret;
             
 
